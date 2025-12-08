@@ -16,7 +16,7 @@ try:
     from game_calculator import GameCalculator
     CALCULATOR_AVAILABLE = True
     calculator = GameCalculator()
-    print("✅ GameCalculator доступен для расчёта уровней")
+    print("✅ GameCalculator доступен для расчёта уровней и ограничений отображения")
 except ImportError:
     CALCULATOR_AVAILABLE = False
     print("⚠️  GameCalculator не найден, уровни не будут рассчитаны")
@@ -109,6 +109,9 @@ def fetch_all_players():
                     'last_updated': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 }
                 
+                # Рассчитываем значения для отображения (ограничение до 100%)
+                calculate_display_values(player_entry)
+                
                 # Рассчитываем уровень и XP, если доступен калькулятор
                 if CALCULATOR_AVAILABLE:
                     try:
@@ -119,10 +122,25 @@ def fetch_all_players():
                 players[user_id] = player_entry
                 
                 # Выводим информацию с уровнем, если рассчитан
+                display_msg = ""
                 if 'level' in player_entry['data']:
-                    print(f"   👤 {username} (ID:{user_id}): Ур.{player_entry['data']['level']} - {status_text}")
+                    display_msg = f"Ур.{player_entry['data']['level']} - "
+                
+                # Добавляем информацию о превышении значений
+                infection_display = player_entry['data'].get('display_infection', player_entry['data'].get('infection', 0))
+                whisper_display = player_entry['data'].get('display_whisper', player_entry['data'].get('whisper', 0))
+                
+                if player_entry['data'].get('has_exceeded_infection', False):
+                    display_msg += f"🦠{infection_display}%+ "
                 else:
-                    print(f"   👤 {username} (ID:{user_id}): {status_text}")
+                    display_msg += f"🦠{infection_display}% "
+                    
+                if player_entry['data'].get('has_exceeded_whisper', False):
+                    display_msg += f"👁️{whisper_display}%+ "
+                else:
+                    display_msg += f"👁️{whisper_display}% "
+                
+                print(f"   👤 {username} (ID:{user_id}): {display_msg}💰{player_entry['data'].get('credits', 0)}")
         
         print(f"\n✅ Успешно! Найдено игроков: {len(players)}")
         return players
@@ -166,6 +184,41 @@ def parse_status(status_text):
     
     return result
 
+def calculate_display_values(player_data):
+    """
+    Рассчитывает значения для отображения (с ограничением до 100%)
+    """
+    try:
+        data = player_data['data']
+        
+        # Получаем реальные значения
+        real_infection = data.get('infection', 0)
+        real_whisper = data.get('whisper', 0)
+        
+        # Если калькулятор доступен, используем его метод
+        if CALCULATOR_AVAILABLE:
+            display_values = calculator.get_display_values(real_infection, real_whisper)
+        else:
+            # Вручную ограничиваем до 100%
+            MAX_DISPLAY = 100
+            display_infection = min(real_infection, MAX_DISPLAY)
+            display_whisper = min(real_whisper, MAX_DISPLAY)
+            
+            display_values = {
+                'display_infection': display_infection,
+                'display_whisper': display_whisper,
+                'has_exceeded_infection': real_infection > MAX_DISPLAY,
+                'has_exceeded_whisper': real_whisper > MAX_DISPLAY,
+                'real_infection': real_infection,
+                'real_whisper': real_whisper
+            }
+        
+        # Сохраняем значения в данные игрока
+        data.update(display_values)
+        
+    except Exception as e:
+        print(f"❌ Ошибка при расчёте значений отображения: {e}")
+
 def calculate_player_level(player_data):
     """
     Рассчитывает уровень игрока и XP на основе текущих статистик
@@ -177,38 +230,34 @@ def calculate_player_level(player_data):
     try:
         data = player_data['data']
         
-        # Получаем значения статистик
+        # Получаем реальные значения статистик
         credits = data.get('credits', 0)
-        infection = data.get('infection', 0)
-        whisper = data.get('whisper', 0)
+        real_infection = data.get('real_infection', data.get('infection', 0))
+        real_whisper = data.get('real_whisper', data.get('whisper', 0))
         
-        # Рассчитываем XP
+        # Рассчитываем XP (использует display значения внутри калькулятора)
         xp = calculator.calculate_xp(
             credits=credits,
-            infection=infection,
-            whisper=whisper,
-            days_since_reg=30,  # Значение по умолчанию
-            activity_multiplier=1.0  # Без активности при парсинге
+            infection=real_infection,
+            whisper=real_whisper,
+            days_since_reg=30,
+            post_count=0  # При парсинге активности нет
         )
         
-        # Рассчитываем уровень на основе XP
-        level = 1
-        max_level = 100  # Максимальный уровень из GameCalculator
-        
-        for lvl in range(1, max_level + 1):
-            level_info = calculator.get_level_info(lvl)
-            if xp >= level_info['xp_required']:
-                level = lvl
-            else:
-                break
+        # Рассчитываем уровень
+        level = calculator.calculate_level_from_xp(xp)
         
         # Получаем информацию о текущем уровне
         level_info = calculator.get_level_info(level)
+        next_level_info = calculator.get_level_info(level + 1)
+        
+        # XP до следующего уровня
+        xp_to_next = max(0, next_level_info['xp_required'] - xp) if level < 100 else 0
         
         # Сохраняем расчёты в данных игрока
         data['xp'] = xp
         data['level'] = level
-        data['xp_to_next_level'] = level_info['xp_required'] - xp
+        data['xp_to_next_level'] = xp_to_next
         
         # Добавляем информацию о текущем уровне
         data['level_info'] = {
@@ -217,8 +266,16 @@ def calculate_player_level(player_data):
             'xp_required': level_info['xp_required'],
             'bonus_credits': level_info['bonus_credits'],
             'infection_resistance': level_info['infection_resistance'],
-            'whisper_bonus': level_info['whisper_bonus']
+            'whisper_bonus': level_info['whisper_bonus'],
+            'next_level_xp_required': next_level_info['xp_required'] if level < 100 else None
         }
+        
+        # Рассчитываем и сохраняем последствия и эффекты
+        if real_infection > 100 or real_whisper > 100:
+            data['exceeded_effects'] = {
+                'infection_consequences': calculator.calculate_infection_consequences(real_infection),
+                'whisper_effects': calculator.calculate_whisper_effects(real_whisper)
+            }
         
     except Exception as e:
         print(f"❌ Ошибка при расчёте уровня для {player_data['username']}: {e}")
@@ -251,10 +308,18 @@ def save_players_data(players_data, output_dir="data/players"):
         player_simple = {
             'username': data['username'],
             'credits': data['data'].get('credits', 0),
-            'infection': data['data'].get('infection', 0),
-            'whisper': data['data'].get('whisper', 0),
+            'infection': data['data'].get('display_infection', data['data'].get('infection', 0)),
+            'whisper': data['data'].get('display_whisper', data['data'].get('whisper', 0)),
             'last_visit': data['forum_stats']['last_visit']
         }
+        
+        # Добавляем реальные значения и флаги превышения
+        player_simple.update({
+            'real_infection': data['data'].get('real_infection', data['data'].get('infection', 0)),
+            'real_whisper': data['data'].get('real_whisper', data['data'].get('whisper', 0)),
+            'has_exceeded_infection': data['data'].get('has_exceeded_infection', False),
+            'has_exceeded_whisper': data['data'].get('has_exceeded_whisper', False)
+        })
         
         # Добавляем информацию об уровне, если она есть
         if 'level' in data['data']:
@@ -273,7 +338,7 @@ def save_players_data(players_data, output_dir="data/players"):
     print(f"💾 Данные сохранены:")
     print(f"   - {len(players_data)} файлов в {output_dir}/")
     print(f"   - Общий файл: {output_dir}/all_players.json")
-    print(f"   - Веб-версия: players_data.json")
+    print(f"   - Веб-версия: players_data.json (с ограничением отображения до 100%)")
     
     return len(players_data)
 
@@ -285,17 +350,29 @@ def generate_stats_report(players_data):
     print("\n📊 СТАТИСТИКА ИГРОКОВ:")
     print("=" * 50)
     
-    # Считаем средние значения
+    # Считаем средние значения (используем display значения для отображения)
     credits_list = [p['data'].get('credits', 0) for p in players_data.values()]
-    infection_list = [p['data'].get('infection', 0) for p in players_data.values()]
-    whisper_list = [p['data'].get('whisper', 0) for p in players_data.values()]
+    infection_display_list = [p['data'].get('display_infection', p['data'].get('infection', 0)) for p in players_data.values()]
+    whisper_display_list = [p['data'].get('display_whisper', p['data'].get('whisper', 0)) for p in players_data.values()]
+    
+    # Считаем количество игроков с превышенными значениями
+    exceeded_infection_count = sum(1 for p in players_data.values() if p['data'].get('has_exceeded_infection', False))
+    exceeded_whisper_count = sum(1 for p in players_data.values() if p['data'].get('has_exceeded_whisper', False))
     
     if credits_list:
         print(f"💰 Кредиты: {min(credits_list)} ← {sum(credits_list)/len(credits_list):.0f} → {max(credits_list)}")
-    if infection_list:
-        print(f"🦠 Заражение: {min(infection_list)}% ← {sum(infection_list)/len(infection_list):.0f}% → {max(infection_list)}%")
-    if whisper_list:
-        print(f"👁️ Шёпот: {min(whisper_list)}% ← {sum(whisper_list)/len(whisper_list):.0f}% → {max(whisper_list)}%")
+    if infection_display_list:
+        avg_infection = sum(infection_display_list)/len(infection_display_list)
+        max_display_infection = max(infection_display_list)
+        print(f"🦠 Заражение (отобр.): {min(infection_display_list)}% ← {avg_infection:.1f}% → {max_display_infection}%")
+        if exceeded_infection_count > 0:
+            print(f"   {exceeded_infection_count} игроков имеют заражение > 100%")
+    if whisper_display_list:
+        avg_whisper = sum(whisper_display_list)/len(whisper_display_list)
+        max_display_whisper = max(whisper_display_list)
+        print(f"👁️ Шёпот (отобр.): {min(whisper_display_list)}% ← {avg_whisper:.1f}% → {max_display_whisper}%")
+        if exceeded_whisper_count > 0:
+            print(f"   {exceeded_whisper_count} игроков имеют шёпот > 100%")
     
     # Статистика по уровням, если есть
     if CALCULATOR_AVAILABLE and any('level' in p['data'] for p in players_data.values()):
@@ -319,7 +396,14 @@ def generate_stats_report(players_data):
     print(f"\n🏆 Топ-3 по кредитам:")
     for user_id, data in top_credits:
         level_info = f" (Ур.{data['data'].get('level', '?')})" if 'level' in data['data'] else ""
-        print(f"   {data['username']}{level_info}: {data['data'].get('credits', 0):,} кредитов")
+        infection_info = ""
+        if data['data'].get('has_exceeded_infection', False):
+            infection_info = f", Заражение: {data['data'].get('real_infection', 0)}%"
+        whisper_info = ""
+        if data['data'].get('has_exceeded_whisper', False):
+            whisper_info = f", Шёпот: {data['data'].get('real_whisper', 0)}%"
+        
+        print(f"   {data['username']}{level_info}: {data['data'].get('credits', 0):,} кредитов{infection_info}{whisper_info}")
     
     # Топ-3 по уровню, если есть уровни
     if CALCULATOR_AVAILABLE and any('level' in p['data'] for p in players_data.values()):
@@ -333,14 +417,28 @@ def generate_stats_report(players_data):
                 level = data['data']['level']
                 xp = data['data'].get('xp', 0)
                 next_level_xp = data['data'].get('xp_to_next_level', 0)
-                print(f"   {data['username']}: Ур.{level} (XP: {xp:,}, до след.: {next_level_xp:,})")
+                
+                # Проверяем превышение значений
+                infection_status = ""
+                if data['data'].get('has_exceeded_infection', False):
+                    infection_status = f" | 🦠{data['data'].get('display_infection', 0)}%+"
+                else:
+                    infection_status = f" | 🦠{data['data'].get('display_infection', 0)}%"
+                
+                whisper_status = ""
+                if data['data'].get('has_exceeded_whisper', False):
+                    whisper_status = f" | 👁️{data['data'].get('display_whisper', 0)}%+"
+                else:
+                    whisper_status = f" | 👁️{data['data'].get('display_whisper', 0)}%"
+                
+                print(f"   {data['username']}: Ур.{level} (XP: {xp:,}, до след.: {next_level_xp:,}){infection_status}{whisper_status}")
 
 # === ЗАПУСК ПАРСЕРА ===
 if __name__ == "__main__":
     print("=" * 60)
     print("🎮 WHISPER OF THE VOID - ПАРСЕР СПИСКА ИГРОКОВ")
     if CALCULATOR_AVAILABLE:
-        print("🎯 Интегрирован с GameCalculator")
+        print("🎯 Интегрирован с GameCalculator (ограничение отображения до 100%)")
     print("=" * 60)
     
     # Запускаем парсинг
@@ -361,14 +459,34 @@ if __name__ == "__main__":
             print(f"   Имя: {void_data['username']}")
             print(f"   Статус: {void_data['status_raw']}")
             
+            # Отображаемые значения
+            infection_display = void_data['data'].get('display_infection', void_data['data'].get('infection', 0))
+            whisper_display = void_data['data'].get('display_whisper', void_data['data'].get('whisper', 0))
+            
+            # Реальные значения
+            real_infection = void_data['data'].get('real_infection', void_data['data'].get('infection', 0))
+            real_whisper = void_data['data'].get('real_whisper', void_data['data'].get('whisper', 0))
+            
             if 'level' in void_data['data']:
                 level_data = void_data['data']['level_info']
                 print(f"   Уровень: {level_data['current_level']} (XP: {void_data['data']['xp']:,})")
                 print(f"   До след. уровня: {void_data['data']['xp_to_next_level']:,} XP")
             
-            print(f"   Данные: Кредиты={void_data['data'].get('credits', 0)}, "
-                  f"Заражение={void_data['data'].get('infection', 0)}%, "
-                  f"Шёпот={void_data['data'].get('whisper', 0)}%")
+            print(f"   Данные: Кредиты={void_data['data'].get('credits', 0)}")
+            print(f"   Заражение: {infection_display}% (реальное: {real_infection}%)", 
+                  end="")
+            if void_data['data'].get('has_exceeded_infection', False):
+                print(" [ПРЕВЫШЕНО!]")
+            else:
+                print()
+                
+            print(f"   Шёпот: {whisper_display}% (реальное: {real_whisper}%)", 
+                  end="")
+            if void_data['data'].get('has_exceeded_whisper', False):
+                print(" [ПРЕВЫШЕНО!]")
+            else:
+                print()
+            
             print(f"   Сообщений: {void_data['forum_stats']['posts']}")
         
         elapsed_time = time.time() - start_time
