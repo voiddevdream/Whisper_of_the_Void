@@ -176,7 +176,6 @@ def save_players_data(players_data, output_dir="data/players"):
     }
     
     web_data_file = "players_data.json"  # Будет создан в корне
-    os.makedirs("web", exist_ok=True)
     with open(web_data_file, 'w', encoding='utf-8') as f:
         json.dump(simple_data, f, ensure_ascii=False, indent=2)
     
