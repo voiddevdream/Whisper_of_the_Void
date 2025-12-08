@@ -1,0 +1,22 @@
+{
+  "user_id": 4,
+  "username": "Negan",
+  "status_raw": "К:+100 З:+130% Ш:+3%",
+  "data": {
+    "credits": 105,
+    "infection": 100,
+    "whisper": 3
+  },
+  "forum_stats": {
+    "posts": 4,
+    "registered": "2025-11-12",
+    "last_visit": "2025-11-14"
+  },
+  "last_updated": "2025-12-08 14:02:26",
+  "last_calculation": {
+    "credits_change": 5,
+    "infection_change": 0.2,
+    "whisper_change": 0,
+    "calculation_time": "2025-12-08T14:02:26.132417"
+  }
+}

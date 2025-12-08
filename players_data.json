@@ -1,22 +1,22 @@
 {
   "2": {
     "username": "Void",
-    "credits": 200,
-    "infection": 13,
-    "whisper": 312,
+    "credits": 215,
+    "infection": 13.17,
+    "whisper": 300,
     "last_visit": "Сегодня"
   },
   "4": {
     "username": "Negan",
-    "credits": 100,
-    "infection": 130,
+    "credits": 105,
+    "infection": 100,
     "whisper": 3,
     "last_visit": "2025-11-14"
   },
   "3": {
     "username": "PR-Cephalon",
-    "credits": 20,
-    "infection": 55,
+    "credits": 25,
+    "infection": 55.2,
     "whisper": -12,
     "last_visit": "2025-10-22"
   }
