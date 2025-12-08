@@ -37,8 +37,6 @@ jobs:
         ls -la
         echo "Содержимое scripts/:"
         ls -la scripts/
-        echo "Содержимое корня:"
-        find . -name "*.py" -o -name "*.json" | head -20
         
     # 5. Запускаем обновлённый парсер (сначала userlist_parser, чтобы обновить данные)
     - name: 🎮 Run player data update with levels
@@ -48,7 +46,7 @@ jobs:
         echo "Проверяем players_data.json..."
         if [ -f "players_data.json" ]; then
           echo "players_data.json существует"
-          head -n 50 players_data.json
+          ls -la players_data.json
         else
           echo "ОШИБКА: players_data.json не создан!"
         fi
@@ -65,24 +63,13 @@ jobs:
         echo "Проверяем обновлённые данные..."
         if [ -f "players_data.json" ]; then
           echo "=== Содержимое players_data.json (первые 3 игрока) ==="
-          python -c "
-import json
-with open('players_data.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
-for i, (player_id, player_data) in enumerate(list(data.items())[:3]):
-    print(f'Игрок {player_id}: {player_data.get(\"username\", \"Unknown\")}')
-    print(f'  Уровень: {player_data.get(\"level\", \"Нет данных\")}')
-    print(f'  XP: {player_data.get(\"xp\", \"Нет данных\")}')
-    print(f'  Кредиты: {player_data.get(\"credits\", \"Нет данных\")}')
-    print(f'  Заражение: {player_data.get(\"infection\", \"Нет данных\")}%')
-    print(f'  Шёпот: {player_data.get(\"whisper\", \"Нет данных\")}%')
-    print()
-          "
-        else:
+          python -c "import json; data = json.load(open('players_data.json', 'r', encoding='utf-8')); items = list(data.items())[:3]; print('Количество игроков:', len(data)); print(); [print(f'Игрок {id}: {p[\"username\"]}\\n  Уровень: {p.get(\"level\", \"Нет\")}\\n  XP: {p.get(\"xp\", \"Нет\")}\\n  Кредиты: {p.get(\"credits\", \"Нет\")}\\n  Заражение: {p.get(\"infection\", \"Нет\")}%\\n  Шёпот: {p.get(\"whisper\", \"Нет\")}%\\n') for id, p in items]"
+        else
           echo "ОШИБКА: players_data.json не найден!"
+        fi
           
-        echo "=== Файлы в data/players/ ==="
-        ls -la data/players/ || echo "Папка data/players/ не существует"
+        echo "=== Файлы в data/ ==="
+        ls -la data/ 2>/dev/null || echo "Папка data/ не существует"
         
     # 8. Настраиваем Git и пушим изменения
     - name: 💾 Commit & Push
@@ -91,7 +78,7 @@ for i, (player_id, player_data) in enumerate(list(data.items())[:3]):
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
         # Добавляем ВСЕ изменённые данные
-        git add data/ players_data.json scripts/
+        git add data/ players_data.json
         
         # Проверяем, есть ли изменения для коммита
         if git diff --staged --quiet; then
