@@ -7,8 +7,21 @@ on:
   workflow_dispatch:  # Позволяет запускать вручную
 
 jobs:
-  update-data:
+  update-data:jobs:
+  update:
     runs-on: ubuntu-latest
+    # ДОБАВЬТЕ ЭТОТ БЛОК:
+    permissions:
+      contents: write  # Даём разрешение на запись в репозиторий
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v3
+      # И добавьте токен сюда:
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    ... # остальные шаги
+    runs-on: ubuntu-latest
+    
     
     steps:
     - name: Checkout repository
