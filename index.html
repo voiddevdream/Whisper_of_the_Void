@@ -16,6 +16,8 @@
             --accent-green: #00ff88;
             --accent-pink: #ff66cc;
             --accent-gold: #ffd700;
+            --accent-blue: #4169e1;
+            --accent-orange: #ffa500;
         }
         
         * {
@@ -36,7 +38,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -115,6 +117,7 @@
         .filters {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
         
         .filter-btn {
@@ -125,6 +128,7 @@
             color: var(--text);
             cursor: pointer;
             transition: all 0.3s;
+            white-space: nowrap;
         }
         
         .filter-btn:hover, .filter-btn.active {
@@ -133,7 +137,7 @@
         
         .players-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -181,6 +185,29 @@
             font-size: 1.8rem;
             margin-right: 20px;
             flex-shrink: 0;
+            position: relative;
+        }
+        
+        .player-avatar.level-up {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+        }
+        
+        .level-badge {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--accent-blue);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 2px solid var(--bg-card);
+            box-shadow: 0 0 10px rgba(65, 105, 225, 0.5);
         }
         
         .player-info h3 {
@@ -229,6 +256,52 @@
         
         .whisper .stat-value {
             color: var(--accent-pink);
+        }
+        
+        .player-level-progress {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+        
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .level-text {
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+        
+        .xp-text {
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+        
+        .xp-bar-container {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .xp-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .xp-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
         
         .player-meta {
@@ -285,6 +358,17 @@
             border-radius: 3px;
         }
         
+        .level-indicator {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
         @media (max-width: 768px) {
             .players-grid {
                 grid-template-columns: 1fr;
@@ -299,8 +383,40 @@
                 max-width: 100%;
             }
             
+            .filters {
+                justify-content: center;
+            }
+            
             h1 {
                 font-size: 2rem;
+            }
+            
+            .player-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .whisper {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .player-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .whisper {
+                grid-column: span 1;
+            }
+            
+            .player-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .player-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -309,20 +425,22 @@
     <div class="container">
         <header>
             <h1><i class="fas fa-ghost"></i> Whisper of the Void</h1>
-            <div class="subtitle">Статистика игроков в постапокалиптическом киберпанке Хёльвании</div>
+            <div class="subtitle">Статистика игроков с системой уровней GameCalculator</div>
             <div class="last-update" id="last-update">Загрузка данных...</div>
         </header>
         
         <div class="controls">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="search-input" placeholder="Поиск игрока...">
+                <input type="text" id="search-input" placeholder="Поиск игрока по имени или ID...">
             </div>
             
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Все игроки</button>
-                <button class="filter-btn" data-filter="top-credits">Топ по кредитам</button>
-                <button class="filter-btn" data-filter="high-infection">Высокое заражение</button>
+                <button class="filter-btn" data-filter="top-level">Высокий уровень</button>
+                <button class="filter-btn" data-filter="top-credits">Богачи</button>
+                <button class="filter-btn" data-filter="high-infection">Заражённые</button>
+                <button class="filter-btn" data-filter="high-whisper">Шёпот Бездны</button>
             </div>
         </div>
         
@@ -345,18 +463,22 @@
                 <div class="legend-color" style="background-color: var(--accent-pink);"></div>
                 <span>Шёпот Бездны — влияние на разум</span>
             </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: var(--accent-blue);"></div>
+                <span>Уровень — прогресс игрока</span>
+            </div>
         </div>
         
         <footer>
             <p>Whisper of the Void © 2025 — Проект Элис и Лекси</p>
-            <p>Данные обновляются автоматически каждый день в 03:00 UTC</p>
+            <p>Данные обновляются автоматически каждый день с использованием GameCalculator</p>
             <p><a href="https://warframe.f-rpg.me/" style="color: var(--accent-cyan);">Перейти на форум игры</a></p>
         </footer>
     </div>
 
     <script>
         // Конфигурация
-        const PLAYERS_DATA_URL = 'https://raw.githubusercontent.com/voiddevdream/Whisper_of_the_Void/main/players_data.json';
+        const PLAYERS_DATA_URL = 'players_data.json';
         
         // Глобальные переменные
         let allPlayers = [];
@@ -378,8 +500,26 @@
                     ...player
                 }));
                 
-                // Сортируем по кредитам (по убыванию)
-                allPlayers.sort((a, b) => b.credits - a.credits);
+                // Рассчитываем прогресс до следующего уровня для отображения
+                allPlayers.forEach(player => {
+                    if (player.xp !== undefined && player.xp_to_next_level !== undefined) {
+                        const currentLevelXP = player.xp - getLevelXP(player.level || 1);
+                        const nextLevelXP = getLevelXP((player.level || 1) + 1) - getLevelXP(player.level || 1);
+                        player.xp_progress = nextLevelXP > 0 ? (currentLevelXP / nextLevelXP) * 100 : 0;
+                        player.xp_current_level = currentLevelXP;
+                        player.xp_next_level = nextLevelXP;
+                    }
+                });
+                
+                // Сортируем по уровню (по убыванию), а затем по кредитам
+                allPlayers.sort((a, b) => {
+                    const levelA = a.level || 1;
+                    const levelB = b.level || 1;
+                    if (levelB !== levelA) {
+                        return levelB - levelA;
+                    }
+                    return b.credits - a.credits;
+                });
                 
                 // Обновляем интерфейс
                 updateLastUpdateTime();
@@ -389,6 +529,12 @@
                 console.error('Ошибка загрузки данных:', error);
                 showError('Не удалось загрузить данные игроков. Попробуйте обновить страницу позже.');
             }
+        }
+        
+        // Функция для расчета XP для уровня (упрощённая версия)
+        function getLevelXP(level) {
+            // Примерная формула, должна соответствовать GameCalculator
+            return Math.floor(100 * Math.pow(level, 1.8));
         }
         
         // Обновление времени последнего обновления
@@ -403,6 +549,13 @@
             };
             const lastUpdateElement = document.getElementById('last-update');
             lastUpdateElement.textContent = `Данные обновлены: ${now.toLocaleDateString('ru-RU', options)}`;
+            
+            // Добавляем информацию об уровнях, если есть
+            if (allPlayers.length > 0 && allPlayers[0].level) {
+                const maxLevel = Math.max(...allPlayers.map(p => p.level || 1));
+                const avgLevel = (allPlayers.reduce((sum, p) => sum + (p.level || 1), 0) / allPlayers.length).toFixed(1);
+                lastUpdateElement.innerHTML += `<br><small>Уровни: макс. ${maxLevel}, средний ${avgLevel}</small>`;
+            }
         }
         
         // Рендеринг списка игроков
@@ -417,18 +570,21 @@
             grid.innerHTML = players.map(player => `
                 <div class="player-card" data-player-id="${player.id}">
                     <div class="player-header">
-                        <div class="player-avatar">
+                        <div class="player-avatar ${(player.level || 0) >= 10 ? 'level-up' : ''}">
                             ${getAvatarInitials(player.username)}
+                            ${player.level ? `<div class="level-badge">${player.level}</div>` : ''}
                         </div>
                         <div class="player-info">
-                            <h3>${escapeHtml(player.username)}</h3>
+                            <h3>${escapeHtml(player.username)} 
+                                ${player.level ? `<span class="level-indicator">Ур. ${player.level}</span>` : ''}
+                            </h3>
                             <div class="player-id">ID: ${player.id}</div>
                         </div>
                     </div>
                     
                     <div class="player-stats">
                         <div class="stat credits">
-                            <div class="stat-value">${player.credits}</div>
+                            <div class="stat-value">${formatNumber(player.credits)}</div>
                             <div class="stat-label">Кредиты</div>
                         </div>
                         <div class="stat infection">
@@ -441,9 +597,25 @@
                         </div>
                     </div>
                     
+                    ${player.level ? `
+                    <div class="player-level-progress">
+                        <div class="level-header">
+                            <div class="level-text">Уровень ${player.level}</div>
+                            <div class="xp-text">${formatNumber(player.xp || 0)} XP</div>
+                        </div>
+                        <div class="xp-bar-container">
+                            <div class="xp-bar" style="width: ${player.xp_progress || 0}%"></div>
+                        </div>
+                        <div class="xp-info">
+                            <div>${formatNumber(player.xp_current_level || 0)}</div>
+                            <div>${player.xp_to_next_level ? `До ${player.level + 1} ур.: ${formatNumber(player.xp_to_next_level)}` : 'Макс. уровень'}</div>
+                        </div>
+                    </div>
+                    ` : ''}
+                    
                     <div class="player-meta">
                         <div class="last-visit">
-                            <i class="far fa-clock"></i> Был: ${player.last_visit}
+                            <i class="far fa-clock"></i> Был: ${player.last_visit || 'Неизвестно'}
                         </div>
                         <div class="player-actions">
                             <a href="https://warframe.f-rpg.me/profile.php?id=${player.id}" target="_blank" style="color: var(--accent-cyan);">
@@ -455,16 +627,22 @@
             `).join('');
         }
         
+        // Форматирование чисел с разделителями
+        function formatNumber(num) {
+            if (num === undefined || num === null) return '0';
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        
         // Получение инициалов для аватара
         function getAvatarInitials(username) {
             if (!username) return '?';
-            
             // Берем первую букву
             return username.charAt(0).toUpperCase();
         }
         
         // Экранирование HTML для безопасности
         function escapeHtml(text) {
+            if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
@@ -481,9 +659,15 @@
             let filtered = [...allPlayers];
             
             switch(filterType) {
+                case 'top-level':
+                    // Игроки с уровнем 10+
+                    filtered = filtered.filter(player => (player.level || 1) >= 10);
+                    break;
+                    
                 case 'top-credits':
-                    // Топ-5 по кредитам
-                    filtered = filtered.slice(0, 5);
+                    // Топ-10 по кредитам
+                    filtered.sort((a, b) => b.credits - a.credits);
+                    filtered = filtered.slice(0, 10);
                     break;
                     
                 case 'high-infection':
@@ -491,9 +675,14 @@
                     filtered = filtered.filter(player => player.infection >= 50);
                     break;
                     
+                case 'high-whisper':
+                    // Шёпот выше 100%
+                    filtered = filtered.filter(player => player.whisper >= 100);
+                    break;
+                    
                 case 'all':
                 default:
-                    // Все игроки (уже отсортированы по кредитам)
+                    // Все игроки (уже отсортированы по уровню и кредитам)
                     break;
             }
             
@@ -510,8 +699,9 @@
             
             const searchTerm = query.toLowerCase();
             const results = allPlayers.filter(player => 
-                player.username.toLowerCase().includes(searchTerm) || 
-                player.id.toString().includes(searchTerm)
+                (player.username && player.username.toLowerCase().includes(searchTerm)) || 
+                (player.id && player.id.toString().includes(searchTerm)) ||
+                (player.level && player.level.toString().includes(searchTerm))
             );
             
             renderPlayers(results);
