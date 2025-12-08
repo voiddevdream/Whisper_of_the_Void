@@ -154,48 +154,64 @@ class WotVCore:
     
     def calculate_daily_changes(self, players_data, user_activity):
         """
-        Рассчитывает ежедневные изменения показателей
-        Базовые изменения применяются ВСЕМ игрокам
+        Рассчитывает ежедневные изменения показателей с использованием GameCalculator
         """
-        print("🧮 Рассчитываем ежедневные изменения...")
+        print("🧮 Рассчитываем ежедневные изменения (с формулами)...")
         
         changes = {}
+        
+        # Импортируем здесь, чтобы не ломать текущую работу
+        try:
+            from game_calculator import GameCalculator
+            calculator = GameCalculator()
+            use_calculator = True
+            print("   Используется GameCalculator")
+        except ImportError:
+            use_calculator = False
+            print("   ⚠️ GameCalculator не найден, используется базовая логика")
         
         for user_id_str, player_data in players_data.items():
             try:
                 user_id_int = int(user_id_str)
-            except ValueError:
-                continue
-            
-            activity = user_activity.get(user_id_int, {})
-            
-            # БАЗОВЫЕ изменения для ВСЕХ игроков
-            daily_changes = {
-                'credits': 5,  # Базовый доход
-                'infection': 0.2,  # Базовый рост заражения в день
-                'whisper': 0
-            }
-            
-            # Бонусы за активность
-            if activity.get('post_count', 0) > 0:
-                # За каждый пост +10 кредитов
-                daily_changes['credits'] += activity.get('post_count', 0) * 10
+                activity = user_activity.get(user_id_int, {})
                 
-                # За каждый уникальный топик +3% к шёпоту
-                daily_changes['whisper'] += activity.get('unique_topics', 0) * 3
+                if use_calculator:
+                    # Новая логика с калькулятором
+                    progression = calculator.calculate_player_progression(
+                        player_data, 
+                        activity, 
+                        days_since_reg=30  # Можно рассчитать из registered даты
+                    )
+                    
+                    changes[user_id_str] = {
+                        'credits': progression['changes']['credits_change'],
+                        'infection': progression['changes']['infection_change'],
+                        'whisper': progression['changes']['whisper_change']
+                    }
+                    
+                    print(f"   👤 {player_data.get('username', f'ID:{user_id_str}')}: "
+                          f"{progression['changes']['credits_change']:+d}💰, "
+                          f"{progression['changes']['infection_change']:+.1f}%🦠, "
+                          f"{progression['changes']['whisper_change']:+.1f}%👁️")
+                else:
+                    # Старая логика (как fallback)
+                    daily_changes = {
+                        'credits': 5,
+                        'infection': 0.2,
+                        'whisper': 0
+                    }
+                    
+                    if activity.get('post_count', 0) > 0:
+                        daily_changes['credits'] += activity['post_count'] * 10
+                        daily_changes['whisper'] += activity.get('unique_topics', 0) * 3
+                        infection_reduction = min(0.15, activity['post_count'] * 0.03)
+                        daily_changes['infection'] -= infection_reduction
+                    
+                    changes[user_id_str] = daily_changes
                 
-                # Активные игроки медленнее заражаются
-                infection_reduction = min(0.15, activity.get('post_count', 0) * 0.03)
-                daily_changes['infection'] -= infection_reduction
-            
-            changes[user_id_str] = daily_changes
-            
-            # Отладочная информация
-            if activity:
-                print(f"   👤 {player_data.get('username', f'ID:{user_id_str}')}: "
-                      f"+{daily_changes['credits']}💰, "
-                      f"{'+' if daily_changes['infection'] >= 0 else ''}{daily_changes['infection']:.2f}%🦠, "
-                      f"{'+' if daily_changes['whisper'] >= 0 else ''}{daily_changes['whisper']}%👁️")
+            except Exception as e:
+                print(f"   ❌ Ошибка расчета для {user_id_str}: {e}")
+                changes[user_id_str] = {'credits': 0, 'infection': 0, 'whisper': 0}
         
         return changes
     
