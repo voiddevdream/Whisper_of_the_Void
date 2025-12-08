@@ -6,6 +6,7 @@
 import requests
 import json
 import time
+import os
 from datetime import datetime
 
 # Импортируем функцию из нашего парсера
@@ -18,8 +19,24 @@ except ImportError:
         return {}
     
     def save_players_data(players_data, output_dir="data/players"):
-        print("❌ Ошибка: функция save_players_data недоступна")
-        return 0
+        """Переопределенная функция, чтобы гарантировать создание players_data.json в корне"""
+        print("⚠️  Используется заглушка save_players_data. Данные не сохранены.")
+        # Создаем упрощённую версию для веб-интерфейса и сохраняем в корень
+        simple_data = {
+            user_id: {
+                'username': data['username'],
+                'credits': data['data'].get('credits', 0),
+                'infection': data['data'].get('infection', 0),
+                'whisper': data['data'].get('whisper', 0),
+                'last_visit': data['forum_stats']['last_visit']
+            }
+            for user_id, data in players_data.items()
+        }
+        with open('players_data.json', 'w', encoding='utf-8') as f:
+            json.dump(simple_data, f, ensure_ascii=False, indent=2)
+        print(f"💾 Упрощенные данные сохранены в players_data.json")
+        return len(players_data)
+
 
 class WotVCore:
     def __init__(self):
@@ -339,6 +356,7 @@ class WotVCore:
         print(f"   ✍️  Активных: {report['active_players']}")
         if report['top_contributors']:
             print(f"   🏆 Топ активных: {', '.join(p['username'] for p in report['top_contributors'])}")
+
 
 # === ЗАПУСК ===
 if __name__ == "__main__":
