@@ -28,26 +28,75 @@ jobs:
     - name: 📦 Install dependencies
       run: |
         pip install requests beautifulsoup4
-
-    # 4. Запускаем скрипт (ТОЛЬКО если userlist_parser.py исправлен!)
-    - name: 🎮 Run game update
+        
+    # 4. Проверяем структуру файлов
+    - name: 📁 Check file structure
       run: |
-        cd scripts
-        python core_parser.py
-
-    # 5. Настраиваем Git и пушим изменения
+        echo "Текущая директория: $(pwd)"
+        echo "Содержимое:"
+        ls -la
+        echo "Содержимое scripts/:"
+        ls -la scripts/
+        echo "Содержимое корня:"
+        find . -name "*.py" -o -name "*.json" | head -20
+        
+    # 5. Запускаем обновлённый парсер (сначала userlist_parser, чтобы обновить данные)
+    - name: 🎮 Run player data update with levels
+      run: |
+        echo "Запускаем userlist_parser.py для сбора данных с уровнями..."
+        python scripts/userlist_parser.py
+        echo "Проверяем players_data.json..."
+        if [ -f "players_data.json" ]; then
+          echo "players_data.json существует"
+          head -n 50 players_data.json
+        else
+          echo "ОШИБКА: players_data.json не создан!"
+        fi
+        
+    # 6. Запускаем обновление через API (если нужно)
+    - name: 🔄 Run API update
+      run: |
+        echo "Запускаем core_parser.py для обновления через API..."
+        python scripts/core_parser.py
+        
+    # 7. Проверяем результаты
+    - name: 🔍 Verify results
+      run: |
+        echo "Проверяем обновлённые данные..."
+        if [ -f "players_data.json" ]; then
+          echo "=== Содержимое players_data.json (первые 3 игрока) ==="
+          python -c "
+import json
+with open('players_data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+for i, (player_id, player_data) in enumerate(list(data.items())[:3]):
+    print(f'Игрок {player_id}: {player_data.get(\"username\", \"Unknown\")}')
+    print(f'  Уровень: {player_data.get(\"level\", \"Нет данных\")}')
+    print(f'  XP: {player_data.get(\"xp\", \"Нет данных\")}')
+    print(f'  Кредиты: {player_data.get(\"credits\", \"Нет данных\")}')
+    print(f'  Заражение: {player_data.get(\"infection\", \"Нет данных\")}%')
+    print(f'  Шёпот: {player_data.get(\"whisper\", \"Нет данных\")}%')
+    print()
+          "
+        else:
+          echo "ОШИБКА: players_data.json не найден!"
+          
+        echo "=== Файлы в data/players/ ==="
+        ls -la data/players/ || echo "Папка data/players/ не существует"
+        
+    # 8. Настраиваем Git и пушим изменения
     - name: 💾 Commit & Push
       run: |
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
         # Добавляем ВСЕ изменённые данные
-        git add data/ players_data.json
+        git add data/ players_data.json scripts/
         
         # Проверяем, есть ли изменения для коммита
         if git diff --staged --quiet; then
           echo "Нет изменений для коммита."
         else
-          git commit -m "🤖 Авто-обновление данных $(date '+%Y-%m-%d %H:%M')"
+          git commit -m "🤖 Авто-обновление данных игроков с уровнями $(date '+%Y-%m-%d %H:%M')"
           git push origin HEAD:main
         fi
