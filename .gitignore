@@ -1,0 +1,17 @@
+# Секретные конфиги
+config.json
+secrets.py
+*.env
+
+# Файлы Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# Данные игроков (локальные копии)
+local_*.json
+
+# Системные файлы
+.DS_Store
+Thumbs.db
