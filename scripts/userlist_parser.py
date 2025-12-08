@@ -60,9 +60,16 @@ def fetch_all_players():
             else:
                 user_id = None
             
-            # 2. Имя пользователя
-            username_elem = cols[0].find('a')
-            username = username_elem.text.strip() if username_elem else "Неизвестно"
+            # 2. Имя пользователя - ИСПРАВЛЕННАЯ ВЕРСИЯ
+username_elem = cols[0].find('span', class_='usersname')
+if username_elem:
+    # Внутри <span class="usersname"> есть ссылка <a>
+    username_link = username_elem.find('a')
+    username = username_link.text.strip() if username_link else username_elem.text.strip()
+else:
+    # Резервный вариант: ищем любую ссылку в первом столбце
+    username_link = cols[0].find('a')
+    username = username_link.text.strip() if username_link else "Неизвестно"
             
             # 3. СТАТУС - самый важный столбец!
             status_text = cols[1].text.strip()  # Второй столбец: "К:+200 З:+13% Ш:+312%"
