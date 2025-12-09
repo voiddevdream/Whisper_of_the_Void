@@ -1,0 +1,35 @@
+# .github/workflows/test.yml
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10]
+        test-type: [unit, integration]
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    
+    - name: Run unit tests
+      if: matrix.test-type == 'unit'
+      run: pytest -m "not integration" --cov=src --cov-report=xml
+    
+    - name: Run integration tests
+      if: matrix.test-type == 'integration'
+      run: |
+        pytest -m integration -v \
+          --tb=short \
+          --junitxml=integration-test-results.xml
+      env:
+        # Можно добавить задержку между запросами
+        REQUEST_DELAY: "0.5"
