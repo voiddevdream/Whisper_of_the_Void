@@ -1,1 +1,32 @@
 
+{
+  "actions": {
+    "предательство": {"category": "betrayal", "base_effect": -50, "icon": "⚔️"},
+    "кража": {"category": "betrayal", "base_effect": -25, "icon": "👤"},
+    "шантаж": {"category": "betrayal", "base_effect": -35, "icon": "🗂️"},
+    
+    "конфликт": {"category": "hostility", "base_effect": -20, "icon": "⚡"},
+    "оскорбление": {"category": "hostility", "base_effect": -15, "icon": "👊"},
+    "угроза": {"category": "hostility", "base_effect": -18, "icon": "⚠️"},
+    
+    "пари": {"category": "contract", "base_effect": 0, "icon": "🎯"},
+    "соперничество": {"category": "contract", "base_effect": -5, "icon": "🥇"},
+    "долг": {"category": "contract", "base_effect": "variable", "icon": "📜"},
+    
+    "помощь": {"category": "alliance", "base_effect": +15, "icon": "🙌"},
+    "спасение": {"category": "alliance", "base_effect": +30, "icon": "🛡️"},
+    "дар": {"category": "alliance", "base_effect": +10, "icon": "🎁"},
+    
+    "флирт": {"category": "passion", "base_effect": +8, "icon": "💋"},
+    "доверие": {"category": "passion", "base_effect": +20, "icon": "🤫"},
+    "близость": {"category": "passion", "base_effect": +30, "icon": "🔥"}
+  },
+  
+  "categories": {
+    "betrayal": {"name": "Измена", "color": "#6c757d", "symbol": "🗡️"},
+    "hostility": {"name": "Вражда", "color": "#dc3545", "symbol": "⚔️"},
+    "contract": {"name": "Договор", "color": "#ffc107", "symbol": "🤝"},
+    "alliance": {"name": "Союз", "color": "#28a745", "symbol": "🕊️"},
+    "passion": {"name": "Страсть", "color": "#e83e8c", "symbol": "🔥"}
+  }
+}
