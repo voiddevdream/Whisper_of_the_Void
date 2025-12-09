@@ -5,18 +5,51 @@
   "data": {
     "credits": 215,
     "infection": 13.17,
-    "whisper": 300
+    "whisper": 300,
+    "display_infection": 13,
+    "display_whisper": 100,
+    "has_exceeded_infection": false,
+    "has_exceeded_whisper": true,
+    "real_infection": 13,
+    "real_whisper": 312,
+    "xp": 2239,
+    "level": 1,
+    "xp_to_next_level": 1243,
+    "level_info": {
+      "current_level": 1,
+      "xp": 2239,
+      "xp_required": 1000,
+      "bonus_credits": 5,
+      "infection_resistance": 0.5,
+      "whisper_bonus": 2,
+      "next_level_xp_required": 3482
+    },
+    "exceeded_effects": {
+      "infection_consequences": [],
+      "whisper_effects": [
+        {
+          "type": "exceeded",
+          "message": "Шёпот превысил 100% (реальное: 312.0%)",
+          "effect": "Непредсказуемые прозрения"
+        },
+        {
+          "type": "enlightenment",
+          "message": "Полное понимание Бездны",
+          "effect": "+50% к ментальной силе"
+        }
+      ]
+    }
   },
   "forum_stats": {
     "posts": 47,
     "registered": "2025-10-21",
-    "last_visit": "Сегодня"
+    "last_visit": "Вчера"
   },
-  "last_updated": "2025-12-08 14:02:26",
+  "last_updated": "2025-12-09 04:05:22",
   "last_calculation": {
     "credits_change": 15,
     "infection_change": 0.17,
     "whisper_change": 3,
-    "calculation_time": "2025-12-08T14:02:26.132403"
+    "calculation_time": "2025-12-09T04:05:22.288803"
   }
 }

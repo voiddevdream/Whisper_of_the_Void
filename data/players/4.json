@@ -5,18 +5,51 @@
   "data": {
     "credits": 105,
     "infection": 100,
-    "whisper": 3
+    "whisper": 3,
+    "display_infection": 100,
+    "display_whisper": 3,
+    "has_exceeded_infection": true,
+    "has_exceeded_whisper": false,
+    "real_infection": 130,
+    "real_whisper": 3,
+    "xp": 610,
+    "level": 1,
+    "xp_to_next_level": 2872,
+    "level_info": {
+      "current_level": 1,
+      "xp": 610,
+      "xp_required": 1000,
+      "bonus_credits": 5,
+      "infection_resistance": 0.5,
+      "whisper_bonus": 2,
+      "next_level_xp_required": 3482
+    },
+    "exceeded_effects": {
+      "infection_consequences": [
+        {
+          "type": "exceeded",
+          "message": "Заражение превысило 100% (реальное: 130.0%)",
+          "effect": "Скрытые мутации"
+        },
+        {
+          "type": "transformation",
+          "message": "Полное превращение в Техноцит",
+          "effect": "Игрок становится NPC"
+        }
+      ],
+      "whisper_effects": []
+    }
   },
   "forum_stats": {
     "posts": 4,
     "registered": "2025-11-12",
     "last_visit": "2025-11-14"
   },
-  "last_updated": "2025-12-08 14:02:26",
+  "last_updated": "2025-12-09 04:05:22",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2025-12-08T14:02:26.132417"
+    "calculation_time": "2025-12-09T04:05:22.288817"
   }
 }

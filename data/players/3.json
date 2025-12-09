@@ -5,18 +5,36 @@
   "data": {
     "credits": 25,
     "infection": 55.2,
-    "whisper": -12
+    "whisper": -12,
+    "display_infection": 55,
+    "display_whisper": -12,
+    "has_exceeded_infection": false,
+    "has_exceeded_whisper": false,
+    "real_infection": 55,
+    "real_whisper": -12,
+    "xp": 192,
+    "level": 1,
+    "xp_to_next_level": 3290,
+    "level_info": {
+      "current_level": 1,
+      "xp": 192,
+      "xp_required": 1000,
+      "bonus_credits": 5,
+      "infection_resistance": 0.5,
+      "whisper_bonus": 2,
+      "next_level_xp_required": 3482
+    }
   },
   "forum_stats": {
     "posts": 1,
     "registered": "2025-10-21",
     "last_visit": "2025-10-22"
   },
-  "last_updated": "2025-12-08 14:02:26",
+  "last_updated": "2025-12-09 04:05:22",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2025-12-08T14:02:26.132423"
+    "calculation_time": "2025-12-09T04:05:22.288823"
   }
 }
