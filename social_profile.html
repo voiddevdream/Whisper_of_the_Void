@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper of the Void - Социальные профили</title>
+    <link rel="stylesheet" href="css/social_profile.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            color: #f1c40f;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #95a5a6;
+            font-size: 1.1em;
+        }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .player-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .player-card:hover {
+            transform: translateY(-5px);
+            border-color: #f1c40f;
+        }
+        
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .player-avatar {
+            width: 50px;
+            height: 50px;
+            background: #34495e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .player-info h3 {
+            margin: 0;
+            color: #ecf0f1;
+        }
+        
+        .player-info .social-badge {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .instructions {
+            background: rgba(52, 152, 219, 0.1);
+            border: 1px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .instructions h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #f1c40f;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 Социальные профили Хёльвании</h1>
+            <p class="subtitle">Лунно-солнечная система социальных взаимодействий</p>
+        </header>
+        
+        <div class="instructions">
+            <h3>🎯 Как работают социальные профили:</h3>
+            <p>Каждое взаимодействие между игроками влияет на их социальный балл:</p>
+            <ul>
+                <li>Тег <code>#Игрок_действие_модификатор</code> в посте → изменение отношений</li>
+                <li>15 действий в 5 категориях: Измена, Вражда, Договор, Союз, Страсть</li>
+                <li>Иконки от 🌑 (Новолуние) до ☀️ (Яркое солнце)</li>
+                <li>Баллы от -100 (абсолютный негатив) до +100 (абсолютный позитив)</li>
+            </ul>
+        </div>
+        
+        <!-- Примеры профилей -->
+        <div id="profiles-container" class="players-grid">
+            <!-- Профили будут загружены через JavaScript -->
+        </div>
+        
+        <!-- Примеры игроков -->
+        <div class="players-grid">
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-avatar">👤</div>
+                    <div class="player-info">
+                        <h3>DarkVoid</h3>
+                        <div class="social-badge">🌑🗡️ -85</div>
+                    </div>
+                </div>
+                <p><em>"Опасный предатель. Известен вероломными поступками."</em></p>
+            </div>
+            
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-avatar">👤</div>
+                    <div class="player-info">
+                        <h3>RedAlice</h3>
+                        <div class="social-badge">🌕🔥 +15</div>
+                    </div>
+                </div>
+                <p><em>"Эмоциональная натура. Живёт чувствами, а не расчётом."</em></p>
+            </div>
+            
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-avatar">👤</div>
+                    <div class="player-info">
+                        <h3>HopeBringer</h3>
+                        <div class="social-badge">☀️🕊️ +78</div>
+                    </div>
+                </div>
+                <p><em>"Надёжный союзник. Всегда придёт на помощь."</em></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Whisper of the Void • Система социальных профилей v1.0</p>
+            <p>Разработано Лекси Найт и Элис • 2024</p>
+        </footer>
+    </div>
+    
+    <script src="js/social_display.js"></script>
+    <script>
+        // Инициализация системы
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialDisplay = new SocialProfileDisplay();
+            
+            // Загружаем демо-профили
+            const demoProfiles = [
+                { id: 123, name: "DarkVoid" },
+                { id: 456, name: "RedAlice" },
+                { id: 789, name: "HopeBringer" }
+            ];
+            
+            const container = document.getElementById('profiles-container');
+            
+            demoProfiles.forEach(profile => {
+                const profileDiv = document.createElement('div');
+                profileDiv.id = `profile-${profile.id}`;
+                container.appendChild(profileDiv);
+                
+                socialDisplay.renderProfile(`profile-${profile.id}`, profile.id);
+            });
+        });
+    </script>
+</body>
+</html>
