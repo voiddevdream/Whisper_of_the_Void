@@ -3,8 +3,8 @@
   "username": "Void",
   "status_raw": "К:+200 З:+13% Ш:+312%",
   "data": {
-    "credits": 215,
-    "infection": 13.17,
+    "credits": 205,
+    "infection": 13.2,
     "whisper": 300,
     "display_infection": 13,
     "display_whisper": 100,
@@ -43,13 +43,13 @@
   "forum_stats": {
     "posts": 48,
     "registered": "2025-10-21",
-    "last_visit": "Вчера"
+    "last_visit": "2025-12-09"
   },
-  "last_updated": "2025-12-10 04:46:06",
+  "last_updated": "2025-12-11 04:49:43",
   "last_calculation": {
-    "credits_change": 15,
-    "infection_change": 0.17,
-    "whisper_change": 3,
-    "calculation_time": "2025-12-10T04:46:06.542444"
+    "credits_change": 5,
+    "infection_change": 0.2,
+    "whisper_change": 0,
+    "calculation_time": "2025-12-11T04:49:43.980981"
   }
 }
