@@ -1,31 +1,31 @@
 {
   "2": {
     "username": "Void",
-    "credits": 205,
-    "infection": 13,
-    "whisper": 100,
-    "last_visit": "2025-12-11",
-    "real_infection": 13,
-    "real_whisper": 312,
+    "credits": 0,
+    "infection": 0,
+    "whisper": 0,
+    "last_visit": "Сегодня",
+    "real_infection": 0,
+    "real_whisper": 0,
     "has_exceeded_infection": false,
-    "has_exceeded_whisper": true,
+    "has_exceeded_whisper": false,
     "level": 1,
-    "xp": 2239,
-    "xp_to_next_level": 1243
+    "xp": 150,
+    "xp_to_next_level": 3332
   },
   "4": {
     "username": "Negan",
-    "credits": 105,
-    "infection": 100,
-    "whisper": 3,
+    "credits": 0,
+    "infection": 0,
+    "whisper": 0,
     "last_visit": "2025-11-14",
-    "real_infection": 130,
-    "real_whisper": 3,
-    "has_exceeded_infection": true,
+    "real_infection": 0,
+    "real_whisper": 0,
+    "has_exceeded_infection": false,
     "has_exceeded_whisper": false,
     "level": 1,
-    "xp": 610,
-    "xp_to_next_level": 2872
+    "xp": 150,
+    "xp_to_next_level": 3332
   },
   "3": {
     "username": "PR-Cephalon",

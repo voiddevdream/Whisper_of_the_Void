@@ -1,55 +1,37 @@
 {
   "user_id": 2,
   "username": "Void",
-  "status_raw": "К:+200 З:+13% Ш:+312%",
+  "status_raw": "RP|FM|K:200|Z:13|W:312|M:5|S:-15",
   "data": {
-    "credits": 205,
-    "infection": 13.2,
-    "whisper": 300,
-    "display_infection": 13,
-    "display_whisper": 100,
+    "display_infection": 0,
+    "display_whisper": 0,
     "has_exceeded_infection": false,
-    "has_exceeded_whisper": true,
-    "real_infection": 13,
-    "real_whisper": 312,
-    "xp": 2239,
+    "has_exceeded_whisper": false,
+    "real_infection": 0,
+    "real_whisper": 0,
+    "xp": 150,
     "level": 1,
-    "xp_to_next_level": 1243,
+    "xp_to_next_level": 3332,
     "level_info": {
       "current_level": 1,
-      "xp": 2239,
+      "xp": 150,
       "xp_required": 1000,
       "bonus_credits": 5,
       "infection_resistance": 0.5,
       "whisper_bonus": 2,
       "next_level_xp_required": 3482
-    },
-    "exceeded_effects": {
-      "infection_consequences": [],
-      "whisper_effects": [
-        {
-          "type": "exceeded",
-          "message": "Шёпот превысил 100% (реальное: 312.0%)",
-          "effect": "Непредсказуемые прозрения"
-        },
-        {
-          "type": "enlightenment",
-          "message": "Полное понимание Бездны",
-          "effect": "+50% к ментальной силе"
-        }
-      ]
     }
   },
   "forum_stats": {
-    "posts": 48,
+    "posts": 52,
     "registered": "2025-10-21",
-    "last_visit": "2025-12-11"
+    "last_visit": "Сегодня"
   },
-  "last_updated": "2025-12-14 04:49:19",
+  "last_updated": "2025-12-15 04:55:18",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2025-12-14T04:49:19.942837"
+    "calculation_time": "2025-12-15T04:55:18.350381"
   }
 }
