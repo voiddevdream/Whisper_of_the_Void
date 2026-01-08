@@ -27,11 +27,11 @@
     "registered": "2025-11-12",
     "last_visit": "2025-11-14"
   },
-  "last_updated": "2026-01-07 04:00:03",
+  "last_updated": "2026-01-08 03:59:46",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-01-07T04:00:03.317090"
+    "calculation_time": "2026-01-08T03:59:46.153091"
   }
 }
