@@ -1,7 +1,7 @@
 {
   "user_id": 2,
   "username": "Void",
-  "status_raw": "RP|FM|K:200|Z:64|W:82|M:5|S:-15",
+  "status_raw": "RP|FM|K:200|Z:62|W:83|M:5|S:-15",
   "data": {
     "display_infection": 0,
     "display_whisper": 0,
@@ -23,15 +23,15 @@
     }
   },
   "forum_stats": {
-    "posts": 102,
+    "posts": 113,
     "registered": "2025-10-21",
-    "last_visit": "Сегодня"
+    "last_visit": "Вчера"
   },
-  "last_updated": "2026-01-14 04:06:12",
+  "last_updated": "2026-01-15 04:02:24",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-01-14T04:06:12.380419"
+    "calculation_time": "2026-01-15T04:02:24.002518"
   }
 }
