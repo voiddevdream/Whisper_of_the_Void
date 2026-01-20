@@ -1,7 +1,7 @@
 {
   "user_id": 4,
   "username": "Negan",
-  "status_raw": "RhC|FO|K:2700|Z:-53|W:32|M:5|S:15",
+  "status_raw": "RhC|FO|K:2700|Z:103|W:72|M:5|S:15",
   "data": {
     "display_infection": 0,
     "display_whisper": 0,
@@ -27,11 +27,11 @@
     "registered": "2025-11-12",
     "last_visit": "2026-01-17"
   },
-  "last_updated": "2026-01-19 04:09:00",
+  "last_updated": "2026-01-20 04:04:40",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-01-19T04:09:00.600712"
+    "calculation_time": "2026-01-20T04:04:40.672248"
   }
 }
