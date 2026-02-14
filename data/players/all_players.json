@@ -26,14 +26,14 @@
     "forum_stats": {
       "posts": 166,
       "registered": "2025-10-21",
-      "last_visit": "2026-01-30"
+      "last_visit": "Вчера"
     },
-    "last_updated": "2026-02-13 04:49:12",
+    "last_updated": "2026-02-14 04:28:33",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-02-13T04:49:12.306663"
+      "calculation_time": "2026-02-14T04:28:33.437882"
     }
   },
   "4": {
@@ -65,12 +65,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-02-13 04:49:12",
+    "last_updated": "2026-02-14 04:28:33",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-02-13T04:49:12.306674"
+      "calculation_time": "2026-02-14T04:28:33.437894"
     }
   },
   "3": {
@@ -105,12 +105,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-02-13 04:49:12",
+    "last_updated": "2026-02-14 04:28:33",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-02-13T04:49:12.306682"
+      "calculation_time": "2026-02-14T04:28:33.437901"
     }
   }
 }
