@@ -28,12 +28,12 @@
       "registered": "2025-10-21",
       "last_visit": "2026-02-13"
     },
-    "last_updated": "2026-03-18 04:52:19",
+    "last_updated": "2026-03-19 04:50:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-03-18T04:52:19.669952"
+      "calculation_time": "2026-03-19T04:50:55.517336"
     }
   },
   "4": {
@@ -65,12 +65,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-03-18 04:52:19",
+    "last_updated": "2026-03-19 04:50:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-03-18T04:52:19.669964"
+      "calculation_time": "2026-03-19T04:50:55.517347"
     }
   },
   "3": {
@@ -105,12 +105,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-03-18 04:52:19",
+    "last_updated": "2026-03-19 04:50:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-03-18T04:52:19.669971"
+      "calculation_time": "2026-03-19T04:50:55.517355"
     }
   }
 }
