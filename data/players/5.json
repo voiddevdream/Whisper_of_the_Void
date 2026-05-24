@@ -1,7 +1,7 @@
 {
-  "user_id": 2,
-  "username": "Void",
-  "status_raw": "RP|FM|K:122220|Z:5|W:2|M:5|S:54|SOCIAL_MIMICRON:1",
+  "user_id": 5,
+  "username": "Eleanor Nightingale",
+  "status_raw": "Новичок",
   "data": {
     "display_infection": 0,
     "display_whisper": 0,
@@ -23,8 +23,8 @@
     }
   },
   "forum_stats": {
-    "posts": 169,
-    "registered": "2025-10-21",
+    "posts": 3,
+    "registered": "Вчера",
     "last_visit": "Вчера"
   },
   "last_updated": "2026-05-24 06:32:18",
@@ -32,6 +32,6 @@
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-05-24T06:32:18.191613"
+    "calculation_time": "2026-05-24T06:32:18.191629"
   }
 }
