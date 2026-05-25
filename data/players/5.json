@@ -24,14 +24,14 @@
   },
   "forum_stats": {
     "posts": 3,
-    "registered": "Вчера",
+    "registered": "2026-05-23",
     "last_visit": "Вчера"
   },
-  "last_updated": "2026-05-24 06:32:18",
+  "last_updated": "2026-05-25 07:09:02",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-05-24T06:32:18.191629"
+    "calculation_time": "2026-05-25T07:09:02.023384"
   }
 }
