@@ -25,13 +25,13 @@
   "forum_stats": {
     "posts": 5,
     "registered": "2026-05-23",
-    "last_visit": "Вчера"
+    "last_visit": "2026-06-04"
   },
-  "last_updated": "2026-06-05 07:03:12",
+  "last_updated": "2026-06-06 06:24:34",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-06-05T07:03:12.436830"
+    "calculation_time": "2026-06-06T06:24:34.433161"
   }
 }

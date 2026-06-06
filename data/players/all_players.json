@@ -26,14 +26,14 @@
     "forum_stats": {
       "posts": 190,
       "registered": "2025-10-21",
-      "last_visit": "Сегодня"
+      "last_visit": "Вчера"
     },
-    "last_updated": "2026-06-05 07:03:12",
+    "last_updated": "2026-06-06 06:24:34",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-06-05T07:03:12.436809"
+      "calculation_time": "2026-06-06T06:24:34.433149"
     }
   },
   "6": {
@@ -63,14 +63,14 @@
     "forum_stats": {
       "posts": 5,
       "registered": "2026-05-23",
-      "last_visit": "Вчера"
+      "last_visit": "2026-06-04"
     },
-    "last_updated": "2026-06-05 07:03:12",
+    "last_updated": "2026-06-06 06:24:34",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-06-05T07:03:12.436830"
+      "calculation_time": "2026-06-06T06:24:34.433161"
     }
   },
   "5": {
@@ -102,12 +102,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-05-30"
     },
-    "last_updated": "2026-06-05 07:03:12",
+    "last_updated": "2026-06-06 06:24:34",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-06-05T07:03:12.436840"
+      "calculation_time": "2026-06-06T06:24:34.433166"
     }
   },
   "4": {
@@ -139,12 +139,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-06-05 07:03:12",
+    "last_updated": "2026-06-06 06:24:34",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-06-05T07:03:12.436848"
+      "calculation_time": "2026-06-06T06:24:34.433169"
     }
   },
   "3": {
@@ -179,12 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-06-05 07:03:12",
+    "last_updated": "2026-06-06 06:24:34",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-06-05T07:03:12.436862"
+      "calculation_time": "2026-06-06T06:24:34.433176"
     }
   }
 }
