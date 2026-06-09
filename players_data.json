@@ -1,18 +1,4 @@
 {
-  "2": {
-    "username": "Void",
-    "credits": 0,
-    "infection": 0,
-    "whisper": 0,
-    "last_visit": "Вчера",
-    "real_infection": 0,
-    "real_whisper": 0,
-    "has_exceeded_infection": false,
-    "has_exceeded_whisper": false,
-    "level": 1,
-    "xp": 150,
-    "xp_to_next_level": 3332
-  },
   "6": {
     "username": "Quincy Isaacs",
     "credits": 0,
@@ -27,12 +13,26 @@
     "xp": 150,
     "xp_to_next_level": 3332
   },
+  "2": {
+    "username": "Void",
+    "credits": 0,
+    "infection": 0,
+    "whisper": 0,
+    "last_visit": "2026-06-07",
+    "real_infection": 0,
+    "real_whisper": 0,
+    "has_exceeded_infection": false,
+    "has_exceeded_whisper": false,
+    "level": 1,
+    "xp": 150,
+    "xp_to_next_level": 3332
+  },
   "5": {
     "username": "Eleanor Nightingale",
     "credits": 0,
     "infection": 0,
     "whisper": 0,
-    "last_visit": "Вчера",
+    "last_visit": "2026-06-07",
     "real_infection": 0,
     "real_whisper": 0,
     "has_exceeded_infection": false,
