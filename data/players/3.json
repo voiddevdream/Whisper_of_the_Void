@@ -3,8 +3,8 @@
   "username": "PR-Cephalon",
   "status_raw": "К:+20 З:+55% Ш:-12%",
   "data": {
-    "credits": 20,
-    "infection": 55,
+    "credits": 25,
+    "infection": 55.2,
     "whisper": -12,
     "display_infection": 55,
     "display_whisper": -12,
@@ -30,5 +30,11 @@
     "registered": "2025-10-21",
     "last_visit": "2025-10-22"
   },
-  "last_updated": "2026-06-10 07:04:25"
+  "last_updated": "2026-06-11 07:25:37",
+  "last_calculation": {
+    "credits_change": 5,
+    "infection_change": 0.2,
+    "whisper_change": 0,
+    "calculation_time": "2026-06-11T07:25:37.978457"
+  }
 }

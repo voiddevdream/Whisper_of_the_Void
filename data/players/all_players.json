@@ -1,4 +1,41 @@
 {
+  "5": {
+    "user_id": 5,
+    "username": "Eleanor Nightingale",
+    "status_raw": "Новичок",
+    "data": {
+      "display_infection": 0,
+      "display_whisper": 0,
+      "has_exceeded_infection": false,
+      "has_exceeded_whisper": false,
+      "real_infection": 0,
+      "real_whisper": 0,
+      "xp": 150,
+      "level": 1,
+      "xp_to_next_level": 3332,
+      "level_info": {
+        "current_level": 1,
+        "xp": 150,
+        "xp_required": 1000,
+        "bonus_credits": 5,
+        "infection_resistance": 0.5,
+        "whisper_bonus": 2,
+        "next_level_xp_required": 3482
+      }
+    },
+    "forum_stats": {
+      "posts": 8,
+      "registered": "2026-05-23",
+      "last_visit": "Сегодня"
+    },
+    "last_updated": "2026-06-11 07:25:37",
+    "last_calculation": {
+      "credits_change": 5,
+      "infection_change": 0.2,
+      "whisper_change": 0,
+      "calculation_time": "2026-06-11T07:25:37.978430"
+    }
+  },
   "6": {
     "user_id": 6,
     "username": "Quincy Isaacs",
@@ -26,9 +63,15 @@
     "forum_stats": {
       "posts": 5,
       "registered": "2026-05-23",
-      "last_visit": "2026-06-08"
+      "last_visit": "Вчера"
     },
-    "last_updated": "2026-06-10 07:04:25"
+    "last_updated": "2026-06-11 07:25:37",
+    "last_calculation": {
+      "credits_change": 5,
+      "infection_change": 0.2,
+      "whisper_change": 0,
+      "calculation_time": "2026-06-11T07:25:37.978442"
+    }
   },
   "2": {
     "user_id": 2,
@@ -59,38 +102,13 @@
       "registered": "2025-10-21",
       "last_visit": "2026-06-07"
     },
-    "last_updated": "2026-06-10 07:04:25"
-  },
-  "5": {
-    "user_id": 5,
-    "username": "Eleanor Nightingale",
-    "status_raw": "Новичок",
-    "data": {
-      "display_infection": 0,
-      "display_whisper": 0,
-      "has_exceeded_infection": false,
-      "has_exceeded_whisper": false,
-      "real_infection": 0,
-      "real_whisper": 0,
-      "xp": 150,
-      "level": 1,
-      "xp_to_next_level": 3332,
-      "level_info": {
-        "current_level": 1,
-        "xp": 150,
-        "xp_required": 1000,
-        "bonus_credits": 5,
-        "infection_resistance": 0.5,
-        "whisper_bonus": 2,
-        "next_level_xp_required": 3482
-      }
-    },
-    "forum_stats": {
-      "posts": 8,
-      "registered": "2026-05-23",
-      "last_visit": "2026-06-07"
-    },
-    "last_updated": "2026-06-10 07:04:25"
+    "last_updated": "2026-06-11 07:25:37",
+    "last_calculation": {
+      "credits_change": 5,
+      "infection_change": 0.2,
+      "whisper_change": 0,
+      "calculation_time": "2026-06-11T07:25:37.978447"
+    }
   },
   "4": {
     "user_id": 4,
@@ -121,15 +139,21 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-06-10 07:04:25"
+    "last_updated": "2026-06-11 07:25:37",
+    "last_calculation": {
+      "credits_change": 5,
+      "infection_change": 0.2,
+      "whisper_change": 0,
+      "calculation_time": "2026-06-11T07:25:37.978451"
+    }
   },
   "3": {
     "user_id": 3,
     "username": "PR-Cephalon",
     "status_raw": "К:+20 З:+55% Ш:-12%",
     "data": {
-      "credits": 20,
-      "infection": 55,
+      "credits": 25,
+      "infection": 55.2,
       "whisper": -12,
       "display_infection": 55,
       "display_whisper": -12,
@@ -155,6 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-06-10 07:04:25"
+    "last_updated": "2026-06-11 07:25:37",
+    "last_calculation": {
+      "credits_change": 5,
+      "infection_change": 0.2,
+      "whisper_change": 0,
+      "calculation_time": "2026-06-11T07:25:37.978457"
+    }
   }
 }
