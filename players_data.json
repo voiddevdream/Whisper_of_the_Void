@@ -1,10 +1,10 @@
 {
-  "5": {
-    "username": "Eleanor Nightingale",
+  "6": {
+    "username": "Quincy Isaacs",
     "credits": 0,
     "infection": 0,
     "whisper": 0,
-    "last_visit": "Сегодня",
+    "last_visit": "Вчера",
     "real_infection": 0,
     "real_whisper": 0,
     "has_exceeded_infection": false,
@@ -13,8 +13,8 @@
     "xp": 150,
     "xp_to_next_level": 3332
   },
-  "6": {
-    "username": "Quincy Isaacs",
+  "5": {
+    "username": "Eleanor Nightingale",
     "credits": 0,
     "infection": 0,
     "whisper": 0,
