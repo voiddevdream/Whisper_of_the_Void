@@ -1,8 +1,8 @@
 {
-  "6": {
-    "user_id": 6,
-    "username": "Quincy Isaacs",
-    "status_raw": "Новичок",
+  "2": {
+    "user_id": 2,
+    "username": "Void",
+    "status_raw": "RP|FM|K:122220|Z:5|W:2|M:5|S:54|SOCIAL_MIMICRON:1",
     "data": {
       "display_infection": 0,
       "display_whisper": 0,
@@ -24,16 +24,16 @@
       }
     },
     "forum_stats": {
-      "posts": 5,
-      "registered": "2026-05-23",
-      "last_visit": "2026-07-06"
+      "posts": 190,
+      "registered": "2025-10-21",
+      "last_visit": "Вчера"
     },
-    "last_updated": "2026-07-11 05:34:23",
+    "last_updated": "2026-07-12 05:51:49",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-11T05:34:23.029325"
+      "calculation_time": "2026-07-12T05:51:49.927948"
     }
   },
   "5": {
@@ -63,20 +63,20 @@
     "forum_stats": {
       "posts": 8,
       "registered": "2026-05-23",
-      "last_visit": "2026-06-17"
+      "last_visit": "Вчера"
     },
-    "last_updated": "2026-07-11 05:34:23",
+    "last_updated": "2026-07-12 05:51:49",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-11T05:34:23.029337"
+      "calculation_time": "2026-07-12T05:51:49.927960"
     }
   },
-  "2": {
-    "user_id": 2,
-    "username": "Void",
-    "status_raw": "RP|FM|K:122220|Z:5|W:2|M:5|S:54|SOCIAL_MIMICRON:1",
+  "6": {
+    "user_id": 6,
+    "username": "Quincy Isaacs",
+    "status_raw": "Новичок",
     "data": {
       "display_infection": 0,
       "display_whisper": 0,
@@ -98,16 +98,16 @@
       }
     },
     "forum_stats": {
-      "posts": 190,
-      "registered": "2025-10-21",
-      "last_visit": "2026-06-14"
+      "posts": 5,
+      "registered": "2026-05-23",
+      "last_visit": "2026-07-06"
     },
-    "last_updated": "2026-07-11 05:34:23",
+    "last_updated": "2026-07-12 05:51:49",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-11T05:34:23.029342"
+      "calculation_time": "2026-07-12T05:51:49.927964"
     }
   },
   "4": {
@@ -139,12 +139,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-07-11 05:34:23",
+    "last_updated": "2026-07-12 05:51:49",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-11T05:34:23.029346"
+      "calculation_time": "2026-07-12T05:51:49.927968"
     }
   },
   "3": {
@@ -179,12 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-07-11 05:34:23",
+    "last_updated": "2026-07-12 05:51:49",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-11T05:34:23.029352"
+      "calculation_time": "2026-07-12T05:51:49.927975"
     }
   }
 }
