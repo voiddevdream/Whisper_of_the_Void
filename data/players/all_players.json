@@ -26,14 +26,14 @@
     "forum_stats": {
       "posts": 5,
       "registered": "2026-05-23",
-      "last_visit": "Вчера"
+      "last_visit": "2026-07-12"
     },
-    "last_updated": "2026-07-13 06:08:54",
+    "last_updated": "2026-07-14 05:23:15",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-13T06:08:54.698640"
+      "calculation_time": "2026-07-14T05:23:15.755625"
     }
   },
   "2": {
@@ -65,12 +65,12 @@
       "registered": "2025-10-21",
       "last_visit": "2026-07-11"
     },
-    "last_updated": "2026-07-13 06:08:54",
+    "last_updated": "2026-07-14 05:23:15",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-13T06:08:54.698656"
+      "calculation_time": "2026-07-14T05:23:15.755636"
     }
   },
   "5": {
@@ -102,12 +102,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-07-11"
     },
-    "last_updated": "2026-07-13 06:08:54",
+    "last_updated": "2026-07-14 05:23:15",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-13T06:08:54.698661"
+      "calculation_time": "2026-07-14T05:23:15.755641"
     }
   },
   "4": {
@@ -139,12 +139,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-07-13 06:08:54",
+    "last_updated": "2026-07-14 05:23:15",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-13T06:08:54.698666"
+      "calculation_time": "2026-07-14T05:23:15.755645"
     }
   },
   "3": {
@@ -179,12 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-07-13 06:08:54",
+    "last_updated": "2026-07-14 05:23:15",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-07-13T06:08:54.698674"
+      "calculation_time": "2026-07-14T05:23:15.755652"
     }
   }
 }
