@@ -26,14 +26,14 @@
     "forum_stats": {
       "posts": 190,
       "registered": "2025-10-21",
-      "last_visit": "Вчера"
+      "last_visit": "2026-07-31"
     },
-    "last_updated": "2026-08-01 05:49:10",
+    "last_updated": "2026-08-02 05:49:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-08-01T05:49:10.452221"
+      "calculation_time": "2026-08-02T05:49:55.375533"
     }
   },
   "6": {
@@ -65,12 +65,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-07-12"
     },
-    "last_updated": "2026-08-01 05:49:10",
+    "last_updated": "2026-08-02 05:49:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-08-01T05:49:10.452234"
+      "calculation_time": "2026-08-02T05:49:55.375543"
     }
   },
   "5": {
@@ -102,12 +102,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-07-11"
     },
-    "last_updated": "2026-08-01 05:49:10",
+    "last_updated": "2026-08-02 05:49:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-08-01T05:49:10.452238"
+      "calculation_time": "2026-08-02T05:49:55.375547"
     }
   },
   "4": {
@@ -139,12 +139,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-08-01 05:49:10",
+    "last_updated": "2026-08-02 05:49:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-08-01T05:49:10.452242"
+      "calculation_time": "2026-08-02T05:49:55.375550"
     }
   },
   "3": {
@@ -179,12 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-08-01 05:49:10",
+    "last_updated": "2026-08-02 05:49:55",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-08-01T05:49:10.452249"
+      "calculation_time": "2026-08-02T05:49:55.375555"
     }
   }
 }
