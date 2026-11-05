@@ -23,15 +23,15 @@
     }
   },
   "forum_stats": {
-    "posts": 8,
+    "posts": 9,
     "registered": "2026-05-23",
     "last_visit": "Вчера"
   },
-  "last_updated": "2026-11-03 10:23:03",
+  "last_updated": "2026-11-05 10:11:26",
   "last_calculation": {
     "credits_change": 5,
     "infection_change": 0.2,
     "whisper_change": 0,
-    "calculation_time": "2026-11-03T10:23:03.716123"
+    "calculation_time": "2026-11-05T10:11:26.967672"
   }
 }
