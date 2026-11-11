@@ -4,7 +4,7 @@
     "credits": 0,
     "infection": 0,
     "whisper": 0,
-    "last_visit": "Сегодня",
+    "last_visit": "Вчера",
     "real_infection": 0,
     "real_whisper": 0,
     "has_exceeded_infection": false,
