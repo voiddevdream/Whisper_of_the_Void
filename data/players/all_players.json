@@ -28,12 +28,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-11-24"
     },
-    "last_updated": "2026-11-27 11:40:18",
+    "last_updated": "2026-11-28 11:15:13",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-11-27T11:40:18.664769"
+      "calculation_time": "2026-11-28T11:15:13.507354"
     }
   },
   "2": {
@@ -65,12 +65,12 @@
       "registered": "2025-10-21",
       "last_visit": "2026-11-19"
     },
-    "last_updated": "2026-11-27 11:40:18",
+    "last_updated": "2026-11-28 11:15:13",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-11-27T11:40:18.664779"
+      "calculation_time": "2026-11-28T11:15:13.507361"
     }
   },
   "5": {
@@ -102,12 +102,12 @@
       "registered": "2026-05-23",
       "last_visit": "2026-11-05"
     },
-    "last_updated": "2026-11-27 11:40:18",
+    "last_updated": "2026-11-28 11:15:13",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-11-27T11:40:18.664784"
+      "calculation_time": "2026-11-28T11:15:13.507366"
     }
   },
   "4": {
@@ -139,12 +139,12 @@
       "registered": "2025-11-12",
       "last_visit": "2026-01-17"
     },
-    "last_updated": "2026-11-27 11:40:18",
+    "last_updated": "2026-11-28 11:15:13",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-11-27T11:40:18.664788"
+      "calculation_time": "2026-11-28T11:15:13.507369"
     }
   },
   "3": {
@@ -179,12 +179,12 @@
       "registered": "2025-10-21",
       "last_visit": "2025-10-22"
     },
-    "last_updated": "2026-11-27 11:40:18",
+    "last_updated": "2026-11-28 11:15:13",
     "last_calculation": {
       "credits_change": 5,
       "infection_change": 0.2,
       "whisper_change": 0,
-      "calculation_time": "2026-11-27T11:40:18.664794"
+      "calculation_time": "2026-11-28T11:15:13.507374"
     }
   }
 }
